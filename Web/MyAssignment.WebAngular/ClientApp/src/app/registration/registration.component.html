@@ -1,0 +1,49 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <h2>Registration</h2>
+        <div class="card-body">
+          <div class="col-md-12">
+            <form [formGroup]="form" (ngSubmit)="form.status !== 'INVALID'">
+              <div class="mb-3">
+                <label for="userId" class="form-label">User Id (*)</label>
+                <input type="text" class="form-control" id="userId" placeholder="Please enter a User Id" formControlName="userId" />
+                <em style="color: red" *ngIf="form.controls.userId.errors?.['required'] && form.controls.userId.touched">UserId is required</em>
+                <em style="color: red" *ngIf="form.controls.userId.errors?.['maxlength'] && form.controls.userId.touched">User Id must be max 20 characters are allowed</em>
+                <em style="color: red" *ngIf="form.controls.userId.errors?.['pattern'] && form.controls.userId.touched">User Id only allow alpha numeric characters</em>
+              </div>
+              <div class="mb-3">
+                <label for="name" class="form-label">Name (*)</label>
+                <input type="text" class="form-control" id="name" placeholder="Please enter a Name" formControlName="name" />
+                <em style="color: red" *ngIf="form.controls.name.errors?.['required'] && form.controls.name.touched">Name is required</em>
+                <em style="color: red" *ngIf="form.controls.name.errors?.['maxlength'] && form.controls.name.touched">Name must be max 200 characters are allowed</em>
+              </div>
+              <div class="mb-3">
+                <label for="emailId" class="form-label">Email Id</label>
+                <input type="text" class="form-control" id="emailId" placeholder="Please enter a Email Id" formControlName="emailId" />
+                <em style="color: red" *ngIf="form.controls.emailId.errors?.['pattern'] && form.controls.emailId.touched">EmailId is invalid</em>
+              </div>
+              <div class="mb-3">
+                <label for="mobileNumber" class="form-label">Mobile Number</label>
+                <input type="text" class="form-control" id="mobileNumber" placeholder="Please enter a Mobile Number" formControlName="mobileNumber" />
+                <em style="color: red" *ngIf="form.controls.mobileNumber.errors?.['pattern'] && form.controls.mobileNumber.touched">Mobile Number only allow numeric characters</em>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password (*)</label>
+                <input type="password" class="form-control" id="password" placeholder="Please enter a Password" formControlName="password" />
+                <em style="color: red" *ngIf="form.controls.password.errors?.['required'] && form.controls.password.touched">Password is required</em>
+              </div>
+              <div class="mb-3 offset-md-4">
+                <input type="submit" class="btn btn-primary " [disabled]="form.status === 'INVALID'" (click)="onRegistration()" />
+                <!--<a routerLink="/login" class="btn btn-link signup">Login</a>-->
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+<br />
+<br />

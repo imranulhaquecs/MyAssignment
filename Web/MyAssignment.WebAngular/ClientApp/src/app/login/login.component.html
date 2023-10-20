@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <h2>Login</h2>
+        <div class="card-body">
+          <div class="col-md-12">
+            <form [formGroup]="form" (ngSubmit)="form.status !== 'INVALID'">
+              <div class="mb-3">
+                <label for="userId" class="form-label">UserId</label>
+                <input type="userId" class="form-control" id="userId" placeholder="Please enter a UserId" formControlName="userId" [ngClass]="{error: getControl('userId')?.errors && getControl('userId')?.touched}" />
+                <em style="color: red" *ngIf="form.controls.userId.errors?.['required'] && form.controls.userId.touched">UserId is required</em>
+                <em style="color: red" *ngIf="form.controls.userId.errors?.['maxlength'] && form.controls.userId.touched">User Id must be max 20 characters are allowed</em>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Please enter a Password" formControlName="password" [ngClass]="{error: getControl('password')?.errors && getControl('password')?.touched}" />
+                <em style="color: red" *ngIf="form.controls.password.errors?.['required'] && form.controls.password.touched">Password is required</em>
+              </div>
+              <div class="mb-3 offset-md-4">
+                <input type="submit" class="btn btn-primary " [disabled]="form.status === 'INVALID'" (click)="onSignin()" />
+                <!--<a routerLink="/registration" class="btn btn-link signup">Registration</a>-->
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
